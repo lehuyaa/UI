@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 class viTriDatLuoi extends StatefulWidget {
   @override
@@ -67,7 +67,7 @@ class _viTriDatLuoiState extends State<viTriDatLuoi> {
               Expanded(
                   flex: 8,
                   child: Container(
-                    margin: EdgeInsets.only(left: 30.0 , right: 30.0),
+                    margin: EdgeInsets.only(left: 30.0, right: 30.0),
                     child: Column(
                       children: [
                         Expanded(
@@ -76,8 +76,7 @@ class _viTriDatLuoiState extends State<viTriDatLuoi> {
                             margin: EdgeInsets.only(left: 40.0, right: 40.0),
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                              image:
-                                  AssetImage('assets/ViTriDatLuoi.png'),
+                              image: AssetImage('assets/ViTriDatLuoi.png'),
                             )),
                           ),
                         ),
@@ -102,8 +101,7 @@ class _viTriDatLuoiState extends State<viTriDatLuoi> {
                             margin: EdgeInsets.only(left: 40.0, right: 40.0),
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                              image:
-                                  AssetImage('assets/ViTriDatLuoi.png'),
+                              image: AssetImage('assets/ViTriDatLuoi.png'),
                             )),
                           ),
                         ),

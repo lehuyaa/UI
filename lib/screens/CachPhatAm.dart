@@ -7,25 +7,21 @@ class cachPhatAm extends StatefulWidget {
 }
 
 class _cachPhatAmState extends State<cachPhatAm> {
-
   var counter = 0;
 
   List text = [
     "Vị Trí Đặt Lưỡi",
     "Khẩu Hình",
-
   ];
 
   List image = [
     "ViTriDatLuoi.png",
     "KhauHinh.png",
-
   ];
 
   List link = [
-    "viTiDatLuoi",
-    "viTiDatLuoi",
-
+    "viTriDatLuoi",
+    "viTriDatLuoi",
   ];
 
   @override
@@ -86,7 +82,7 @@ class _cachPhatAmState extends State<cachPhatAm> {
                       color: Colors.white,
                       onPressed: () {
                         setState(() {
-                          if (counter > 0 ) {
+                          if (counter > 0) {
                             counter = counter - 1;
                           }
                         });
@@ -94,8 +90,7 @@ class _cachPhatAmState extends State<cachPhatAm> {
                     ),
                     CircleAvatar(
                       radius: 100,
-                      backgroundImage:
-                      AssetImage('assets/'+image[counter]),
+                      backgroundImage: AssetImage('assets/' + image[counter]),
                     ),
                     FlatButton(
                       shape: CircleBorder(
@@ -109,7 +104,7 @@ class _cachPhatAmState extends State<cachPhatAm> {
                       color: Colors.white,
                       onPressed: () {
                         setState(() {
-                          if (counter < 1 ) {
+                          if (counter < 1) {
                             counter = counter + 1;
                           }
                         });
@@ -137,7 +132,8 @@ class _cachPhatAmState extends State<cachPhatAm> {
                         style: TextStyle(color: Colors.black, fontSize: 25),
                       ),
                       color: Colors.white,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
                     ),
                   ),
                 ),

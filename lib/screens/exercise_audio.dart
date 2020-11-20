@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lisp_sync/constants.dart';
-import 'package:lisp_sync/practice.dart';
+import 'practice.dart';
 
 class ExerciseAudioPage extends StatefulWidget {
   final words = [
@@ -146,7 +146,6 @@ class _ExerciseAudioPageState extends State<ExerciseAudioPage> {
                       style: TextStyle(color: Colors.black, fontSize: 15),
                     ),
                     color: Colors.white,
-
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
                   ),

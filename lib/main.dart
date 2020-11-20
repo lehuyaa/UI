@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:lisp_sync/CachPhatAm.dart';
-import 'package:lisp_sync/DoiChieuCachPhatAm.dart';
-import 'package:lisp_sync/KiemTraNghe.dart';
-import 'package:lisp_sync/KiemTraPhatAm.dart';
-import 'package:lisp_sync/TuLay.dart';
-import 'package:lisp_sync/exercise_audio.dart';
-import 'package:lisp_sync/exercise_list.dart';
-import 'package:lisp_sync/home.dart';
-import 'package:lisp_sync/practice.dart';
-import 'package:lisp_sync/viTriDatLuoi.dart';
+import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/CachPhatAm.dart';
+import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/DoiChieuCachPhatAm.dart';
+import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/KiemTraNghe.dart';
+import 'package:lisp_sync/screens/KiemTraPhatAm.dart';
+import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/TuLay.dart';
+import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/exercise_audio.dart';
+import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/exercise_list.dart';
+import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/home.dart';
+import 'package:lisp_sync/screens/practice.dart';
+import 'package:lisp_sync/screens/viTriDatLuoi.dart';
 
 void main() {
   runApp(MyApp());
@@ -43,9 +43,9 @@ class MyApp extends StatelessWidget {
         "exercise_list": (_) => ExerciseListPage(),
         "luyentap": (_) => questionPage(),
         "tudon": (_) => tulay(),
-        "DoiChieuPhatAm":  (_) => DoiChieuCachPhatAm(),
-        "KiemTraNghe" : (_) => KiemTraNghe(),
-        "KiemTraPhatAm" : (_) => KiemTraPhatAm(),
+        "DoiChieuPhatAm": (_) => DoiChieuCachPhatAm(),
+        "KiemTraNghe": (_) => KiemTraNghe(),
+        "KiemTraPhatAm": (_) => KiemTraPhatAm(),
         "viTiDatLuoi": (_) => viTriDatLuoi(),
         "cachPhatAm": (_) => cachPhatAm()
       },

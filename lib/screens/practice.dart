@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lisp_sync/model/question.dart';
 
-import 'constants.dart';
-import 'model/question.dart';
+import '../constants.dart';
 
 class questionPage extends StatefulWidget {
   @override
