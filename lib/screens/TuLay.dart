@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lisp_sync/constants.dart';
+import 'package:lisp_sync/screens/DoiChieuCachPhatAm.dart';
+import 'package:lisp_sync/screens/KiemTraNghe.dart';
+import 'package:lisp_sync/screens/KiemTraPhatAm.dart';
+
+import 'exercise/ui.dart';
 
 class tulay extends StatefulWidget {
   @override
@@ -24,10 +29,10 @@ class _tulayState extends State<tulay> {
   ];
 
   List link = [
-    "luyentap",
-    "DoiChieuPhatAm",
-    "KiemTraNghe",
-    "KiemTraPhatAm",
+    Exercise.withDependency(),
+    DoiChieuCachPhatAm(),
+    KiemTraNghe(),
+    KiemTraPhatAm(),
   ];
 
   @override
@@ -88,7 +93,7 @@ class _tulayState extends State<tulay> {
                       color: Colors.white,
                       onPressed: () {
                         setState(() {
-                          if (counter > 0 ) {
+                          if (counter > 0) {
                             counter = counter - 1;
                           }
                         });
@@ -96,8 +101,7 @@ class _tulayState extends State<tulay> {
                     ),
                     CircleAvatar(
                       radius: 100,
-                      backgroundImage:
-                          AssetImage('assets/'+image[counter]),
+                      backgroundImage: AssetImage('assets/' + image[counter]),
                     ),
                     FlatButton(
                       shape: CircleBorder(
@@ -111,7 +115,7 @@ class _tulayState extends State<tulay> {
                       color: Colors.white,
                       onPressed: () {
                         setState(() {
-                          if (counter < 3 ) {
+                          if (counter < 3) {
                             counter = counter + 1;
                           }
                         });
@@ -132,14 +136,16 @@ class _tulayState extends State<tulay> {
                   child: Center(
                     child: FlatButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, link[counter]);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => link[counter]));
                       },
                       child: Text(
                         text[counter],
                         style: TextStyle(color: Colors.black, fontSize: 25),
                       ),
                       color: Colors.white,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
                     ),
                   ),
                 ),

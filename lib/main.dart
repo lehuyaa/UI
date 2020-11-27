@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/CachPhatAm.dart';
-import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/DoiChieuCachPhatAm.dart';
-import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/KiemTraNghe.dart';
+import 'package:lisp_sync/screens/CachPhatAm.dart';
+import 'package:lisp_sync/screens/DoiChieuCachPhatAm.dart';
+import 'package:lisp_sync/screens/KiemTraNghe.dart';
 import 'package:lisp_sync/screens/KiemTraPhatAm.dart';
-import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/TuLay.dart';
-import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/exercise_audio.dart';
-import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/exercise_list.dart';
-import 'file:///C:/Users/Nguyen%20Huu%20Bang/OneDrive/Desktop/Homework/UI/lib/screens/home.dart';
+import 'package:lisp_sync/screens/TuLay.dart';
+import 'package:lisp_sync/screens/exercise_audio.dart';
+import 'package:lisp_sync/screens/exercise_list.dart';
+import 'package:lisp_sync/screens/home.dart';
+import 'package:lisp_sync/screens/login/ui.dart';
 import 'package:lisp_sync/screens/practice.dart';
 import 'package:lisp_sync/screens/viTriDatLuoi.dart';
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: Login.withDependency(),
       routes: {
         "exercise": (_) => ExerciseAudioPage(),
         "home": (_) => HomePage(),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lisp_sync/constants.dart';
+import 'package:lisp_sync/screens/viTriDatLuoi.dart';
+
+import 'exercise/ui.dart';
 
 class cachPhatAm extends StatefulWidget {
   @override
@@ -12,16 +15,19 @@ class _cachPhatAmState extends State<cachPhatAm> {
   List text = [
     "Vị Trí Đặt Lưỡi",
     "Khẩu Hình",
+    "Luyện tập",
   ];
 
   List image = [
     "ViTriDatLuoi.png",
     "KhauHinh.png",
+    "LuyenTap.png",
   ];
 
   List link = [
-    "viTriDatLuoi",
-    "viTriDatLuoi",
+    viTriDatLuoi(),
+    viTriDatLuoi(),
+    Exercise.withDependency(),
   ];
 
   @override
@@ -104,7 +110,7 @@ class _cachPhatAmState extends State<cachPhatAm> {
                       color: Colors.white,
                       onPressed: () {
                         setState(() {
-                          if (counter < 1) {
+                          if (counter < link.length - 1) {
                             counter = counter + 1;
                           }
                         });
@@ -125,7 +131,8 @@ class _cachPhatAmState extends State<cachPhatAm> {
                   child: Center(
                     child: FlatButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, link[counter]);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => link[counter]));
                       },
                       child: Text(
                         text[counter],
