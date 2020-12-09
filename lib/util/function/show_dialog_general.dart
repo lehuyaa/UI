@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lisp_sync/resources/strings.dart';
+
 //import 'package:lisp_sync/screens/test/ui.dart';
 import 'package:lisp_sync/util/function/logout.dart';
 import 'package:lisp_sync/widgets/show_error.dart';
@@ -20,12 +21,12 @@ void _showDialogClientError(BuildContext context, Function onRetry) {
       context: context,
       barrierDismissible: false,
       builder: (context) => ShowError(error: clientError, actions: [
-            TextButton(
+            FlatButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
                 child: Text('OK')),
-            TextButton(
+            FlatButton(
                 onPressed: () {
                   Navigator.pop(context);
                   onRetry();
@@ -39,7 +40,7 @@ void _showDialogWarningAccount(BuildContext context, String error) {
       context: context,
       barrierDismissible: false,
       builder: (context) => ShowError(error: error, actions: [
-            TextButton(
+            FlatButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -52,7 +53,7 @@ void _showDialogLogout(BuildContext context, Type typeWidgetCurrent) {
       context: context,
       barrierDismissible: false,
       builder: (context) => ShowError(error: cookieExpiredApp, actions: [
-            TextButton(
+            FlatButton(
                 onPressed: () {
                   // if (typeWidgetCurrent == Test) Navigator.pop(context);
                   Navigator.pop(context);
@@ -67,12 +68,12 @@ void _showDialogNoNetwork(BuildContext context, Function onRetry) {
       context: context,
       barrierDismissible: false,
       builder: (context) => ShowError(error: noNetwork, actions: [
-            TextButton(
+            FlatButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
                 child: Text('OK')),
-            TextButton(
+            FlatButton(
                 onPressed: () {
                   Navigator.pop(context);
                   onRetry();

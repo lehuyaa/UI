@@ -1,12 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
-import 'package:lisp_sync/util/variable.dart';
+import 'package:lisp_sync/constants.dart';
 import 'package:lisp_sync/resources/strings.dart';
 import 'package:lisp_sync/screens/exercise/controller.dart';
 import 'package:lisp_sync/screens/test/ui.dart';
 import 'package:lisp_sync/util/function/logout.dart';
 import 'package:lisp_sync/util/function/show_dialog_general.dart';
-import 'package:lisp_sync/widgets/icon_refresh.dart';
 import 'package:lisp_sync/widgets/loading.dart';
 import 'package:provider/provider.dart';
 import 'data.dart';
@@ -14,6 +14,7 @@ import 'data.dart';
 // ignore: must_be_immutable
 class Exercise extends StatelessWidget {
   GestureDetector _tabShowDialog;
+
   static Widget withDependency() {
     return StateNotifierProvider<ExerciseController, ExerciseData>(
       create: (_) => ExerciseController()..initTests(),
@@ -24,53 +25,41 @@ class Exercise extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: _buildDrawer(context),
-        appBar: AppBar(
-            title: Text('Bài kiểm tra của tôi'),
-            centerTitle: true,
-            actions: [
-              IconRefresh(onPress: () {
-                context.read<ExerciseController>().initTests();
-              })
-            ]),
         body: Selector<ExerciseData, bool>(
-          selector: (_, dt) => dt.process,
-          builder: (_, process, __) {
-            return process
-                ? Loading()
-                : SingleChildScrollView(
-                    child: Container(
-                        margin: EdgeInsets.only(top: 15, left: 12, right: 12),
-                        child: Column(children: [
-                          _buildExercise(),
-                          _tabShowDialog = GestureDetector(
-                              child: Container(),
-                              onTap: () {
-                                String error =
-                                    context.read<ExerciseData>().error;
-                                showDialogOfApp(context,
-                                    error: error,
-                                    onRetry: () => context
-                                        .read<ExerciseController>()
-                                        .initTests());
-                              }),
-                          Selector<ExerciseData, int>(
-                            selector: (_, dt) => dt.numOfError,
-                            builder: (_, __, ___) {
-                              Future.delayed(Duration(milliseconds: 500))
-                                  .then((_) => _tabShowDialog.onTap());
-                              return Container();
-                            },
-                          )
-                        ])),
-                  );
-          },
-        ));
+      selector: (_, dt) => dt.process,
+      builder: (_, process, __) {
+        return process
+            ? Loading()
+            : SingleChildScrollView(
+                child: Container(
+                    child: Column(children: [
+                  _buildExercise(),
+                  _tabShowDialog = GestureDetector(
+                      child: Container(),
+                      onTap: () {
+                        String error = context.read<ExerciseData>().error;
+                        showDialogOfApp(context,
+                            error: error,
+                            onRetry: () =>
+                                context.read<ExerciseController>().initTests());
+                      }),
+                  Selector<ExerciseData, int>(
+                    selector: (_, dt) => dt.numOfError,
+                    builder: (_, __, ___) {
+                      Future.delayed(Duration(milliseconds: 500))
+                          .then((_) => _tabShowDialog.onTap());
+                      return Container();
+                    },
+                  )
+                ])),
+              );
+      },
+    ));
   }
 
   Widget _buildDrawer(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Colors.blue,
       width: MediaQuery.of(context).size.width * 0.8,
       child: Column(children: [
         Container(
@@ -113,18 +102,36 @@ class Exercise extends StatelessWidget {
       selector: (_, dt) => dt.test,
       builder: (context, test, __) {
         if (test.length == 0) return Container();
-        return Column(children: [
-          SizedBox(height: 10),
-          for (int i = 0; i < test.length; i++)
-            _buildExerciseItem(context,
-                text: context.select((ExerciseData dt) => dt.test[i]).label,
-                time: context.select((ExerciseData dt) => dt.test[i].time),
-                link: context.select((ExerciseData dt) => dt.test[i].link),
-                isProcess:
-                    context.select((ExerciseData dt) => dt.test[i]).isProcess,
-                numAttempt:
-                    context.select((ExerciseData dt) => dt.test[i].numAttempts))
-        ]);
+        return Container(
+            height: height(context),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color.fromRGBO(40, 20, 131, 1),
+                    Color.fromRGBO(215, 130, 217, 1)
+                  ]),
+            ),
+            child: Column(
+              children: [
+
+                SizedBox(height: height(context) * 0.1),
+                for (int i = 0; i < test.length; i++)
+                  _buildExerciseItem(context,
+                      text:
+                          context.select((ExerciseData dt) => dt.test[i]).label,
+                      time:
+                          context.select((ExerciseData dt) => dt.test[i].time),
+                      link:
+                          context.select((ExerciseData dt) => dt.test[i].link),
+                      isProcess: context
+                          .select((ExerciseData dt) => dt.test[i])
+                          .isProcess,
+                      numAttempt: context
+                          .select((ExerciseData dt) => dt.test[i].numAttempts))
+              ],
+            ));
       },
     );
   }
@@ -138,8 +145,14 @@ class Exercise extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(10),
-      margin: EdgeInsets.only(bottom: 15),
-      decoration: BoxDecoration(color: Colors.blue.withAlpha(30)),
+      margin: EdgeInsets.only(bottom: 15, left: 15, right: 15),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+              topRight: Radius.circular(10),
+              topLeft: Radius.circular(10))),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(text, style: TextStyle(fontFamily: 'monospace')),
         SizedBox(height: 4),
@@ -170,7 +183,7 @@ class Exercise extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     color: link == '#'
                         ? Colors.grey
-                        : (isProcess ? Colors.pink : Colors.greenAccent)),
+                        : (isProcess ? Colors.blue : Colors.greenAccent)),
                 child: Text(
                     link == '#'
                         ? 'HOÀN THÀNH'

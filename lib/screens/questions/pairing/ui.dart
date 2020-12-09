@@ -114,7 +114,7 @@ class Pairing extends StatelessWidget {
                   fit: BoxFit.fill))
           : Container(
               decoration: BoxDecoration(
-                  color: Colors.pink.withAlpha(45),
+                  color: Colors.blue.withAlpha(45),
                   borderRadius: BorderRadius.circular(10)),
               margin: EdgeInsets.symmetric(horizontal: 9.0),
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 15),

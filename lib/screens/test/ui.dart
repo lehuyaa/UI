@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:lisp_sync/constants.dart';
 import 'package:lisp_sync/resources/types.dart';
 import 'package:lisp_sync/screens/questions/choice/ui.dart';
 import 'package:lisp_sync/screens/questions/order_sentence/ui.dart';
@@ -24,10 +25,11 @@ class Test extends StatelessWidget {
   }
 
   GestureDetector _tabShowDialog;
+
   @override
   Widget build(BuildContext context) {
     return !context.select((TestData dt) => dt.init)
-        ? Loading(backgroundColor: Colors.white)
+        ? Loading()
         : Scaffold(
             body: SingleChildScrollView(
             child: Column(
@@ -67,9 +69,17 @@ class Test extends StatelessWidget {
                 ),
                 SizedBox(height: MediaQuery.of(context).padding.top),
                 Container(
+                  color : Color.fromRGBO(40, 20, 131, 1),
                   padding: EdgeInsets.all(15),
                   child: Row(
                     children: [
+                      IconButton(
+                        icon: Icon(Icons.arrow_back),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        color: Colors.white,
+                      ),
                       _QuestionCurrent(),
                       Spacer(),
                       _buildNextButton(context)
@@ -83,15 +93,26 @@ class Test extends StatelessWidget {
                     if (error != '') return Container();
                     if (process) gifLoading.evict();
                     return process
-                        ? Center(
-                            child: Column(children: [
-                              SizedBox(height: 80),
-                              Image(image: gifLoading),
-                              SizedBox(height: 15),
-                              Text('Dữ liệu đang được tải đừng nóng ...',
-                                  style: TextStyle(
-                                      fontFamily: 'monospace', fontSize: 16))
-                            ]),
+                        ? Container(
+                            height: height(context),
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: [
+                                  Color.fromRGBO(40, 20, 131, 1),
+                                  Color.fromRGBO(215, 130, 217, 1)
+                                ])),
+                            child: Center(
+                              child: Column(children: [
+                                SizedBox(height: 80),
+                                Image(image: gifLoading),
+                                SizedBox(height: 15),
+                                Text('Dữ liệu đang được tải đừng nóng ...',
+                                    style: TextStyle(color: Colors.white,
+                                        fontFamily: 'monospace', fontSize: 16))
+                              ]),
+                            ),
                           )
                         : _buildQuestion(context);
                   },
@@ -188,6 +209,6 @@ class _QuestionCurrent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
         'Cau hoi thu ${context.select((TestData dt) => dt.questionCurrent)} / ${context.select((TestData dt) => dt.idQuestions.length)}',
-        style: TextStyle(fontSize: 14, fontFamily: 'monospace'));
+        style: TextStyle(color:Colors.white,fontSize: 14, fontFamily: 'monospace'));
   }
 }

@@ -3,6 +3,7 @@ import 'package:lisp_sync/constants.dart';
 import 'package:lisp_sync/screens/DoiChieuCachPhatAm.dart';
 import 'package:lisp_sync/screens/KiemTraNghe.dart';
 import 'package:lisp_sync/screens/KiemTraPhatAm.dart';
+import 'package:lisp_sync/screens/practice.dart';
 
 import 'exercise/ui.dart';
 
@@ -29,10 +30,10 @@ class _tulayState extends State<tulay> {
   ];
 
   List link = [
-    Exercise.withDependency(),
+    questionPage(),
     DoiChieuCachPhatAm(),
     KiemTraNghe(),
-    KiemTraPhatAm(),
+    Exercise.withDependency(),
   ];
 
   @override

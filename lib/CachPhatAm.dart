@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lisp_sync/constants.dart';
-import 'package:lisp_sync/screens/practice.dart';
-import 'package:lisp_sync/screens/viTriDatLuoi.dart';
-
-import 'exercise/ui.dart';
 
 class cachPhatAm extends StatefulWidget {
   @override
@@ -11,24 +7,25 @@ class cachPhatAm extends StatefulWidget {
 }
 
 class _cachPhatAmState extends State<cachPhatAm> {
+
   var counter = 0;
 
   List text = [
     "Vị Trí Đặt Lưỡi",
     "Khẩu Hình",
-    "Luyện tập",
+
   ];
 
   List image = [
     "ViTriDatLuoi.png",
     "KhauHinh.png",
-    "LuyenTap.png",
+
   ];
 
   List link = [
-    viTriDatLuoi(),
-    viTriDatLuoi(),
-    questionPage(),
+    "viTiDatLuoi",
+    "viTiDatLuoi",
+
   ];
 
   @override
@@ -89,7 +86,7 @@ class _cachPhatAmState extends State<cachPhatAm> {
                       color: Colors.white,
                       onPressed: () {
                         setState(() {
-                          if (counter > 0) {
+                          if (counter > 0 ) {
                             counter = counter - 1;
                           }
                         });
@@ -97,7 +94,8 @@ class _cachPhatAmState extends State<cachPhatAm> {
                     ),
                     CircleAvatar(
                       radius: 100,
-                      backgroundImage: AssetImage('assets/' + image[counter]),
+                      backgroundImage:
+                      AssetImage('assets/'+image[counter]),
                     ),
                     FlatButton(
                       shape: CircleBorder(
@@ -111,7 +109,7 @@ class _cachPhatAmState extends State<cachPhatAm> {
                       color: Colors.white,
                       onPressed: () {
                         setState(() {
-                          if (counter < link.length - 1) {
+                          if (counter < 1 ) {
                             counter = counter + 1;
                           }
                         });
@@ -132,16 +130,14 @@ class _cachPhatAmState extends State<cachPhatAm> {
                   child: Center(
                     child: FlatButton(
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => link[counter]));
+                        Navigator.pushNamed(context, link[counter]);
                       },
                       child: Text(
                         text[counter],
                         style: TextStyle(color: Colors.black, fontSize: 25),
                       ),
                       color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
                     ),
                   ),
                 ),
